@@ -49,16 +49,14 @@ public class EmployeeServiceTests {
 	public static void compareEmployeesExceptId(Employee expected, Employee actual) {
 		Field[] fields = expected.getClass().getDeclaredFields();
 		for (Field field : fields)	{
-			// if (!field.getName().equals("id")) {
-				field.setAccessible(true);
-				try {
-					Object obj1 = field.get(actual);
-					Object obj2 = field.get(expected);
-					assertEquals(field.getName().concat(" field values should match."), obj2, obj1);
-				} catch (Exception e) {
-					assertTrue(field.getName().concat(" field values could not be checked."), false);
-				}
-			// }
+			field.setAccessible(true);
+			try {
+				Object obj1 = field.get(actual);
+				Object obj2 = field.get(expected);
+				assertEquals(field.getName().concat(" field values should match."), obj2, obj1);
+			} catch (Exception e) {
+				assertTrue(field.getName().concat(" field values could not be checked."), false);
+			}
 		}
 	}
 
