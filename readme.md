@@ -42,3 +42,14 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 - Appropriate usage of packages
 - Is the application running as expected
 - No performance issues
+
+#### What I have done
+- Added helper functions to create and Compare Entity objects, which helped writing unit tests without having to modify the underlying class. 
+- Added Unit Tests for the Controller and Services layers, this is useful to easily identify issues we may find on each layer.
+- Fixed a bug that was identified by running the unit tests, in which the POST endpoint was not properly wired to the body of the request.
+
+#### With more time and a bit more of intestigation I would have liked to do also
+- Refactor the Unit Tests to avoid repetition of code and move it into a "utils" module.
+- Add integration tests to identify code leaks that could have impact on other modules, for this small project there was not much need for it but if the project were larger it would be useful to have.
+- Add protection to the endpoints by adding middlewares to verify origin, authorization, etc. of the API calls.
+- Increase test cases to cover some limit cases like having null pointers, references to inexistent records in DB, etc.
